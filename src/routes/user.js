@@ -21,7 +21,7 @@ router.get("/users",async(req,res)=>{
             res.set({
                 'Content-Type':'application/json',
                     'Access-Control-Allow-Origin':'*',
-                    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+                    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS' 
               })
             res.status(200).json(user);
         }
