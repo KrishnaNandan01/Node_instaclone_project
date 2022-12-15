@@ -18,6 +18,11 @@ router.get("/users",async(req,res)=>{
     try{
         const user = await users.find();
         if(user.length){
+            res.set({
+                'Content-Type':'application/json',
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+              })
             res.status(200).json(user);
         }
         else{
