@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 dotenv.config();
+const port = process.env.PORT || 8081;
 app.use(bodyParser.json());
 mongoose.set('strictQuery', true);
 
@@ -23,5 +24,5 @@ app.use("/",router)
 
 
 app.listen(3000,()=>{
-    console.log("server is running at port 3000");
+    console.log(`server is running at ${port}`);
 })
