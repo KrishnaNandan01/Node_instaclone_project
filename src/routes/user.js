@@ -18,7 +18,7 @@ router.get("/users",async(req,res)=>{
     try{
         const user = await users.find();
         if(user.length){
-            res.json(user);
+            res.status(200).json(user);
         }
         else{
             res.status(404).json({
@@ -49,7 +49,7 @@ router.post("/users",async(req,res)=>{
                         description: req.body.description,
                         PostImage: result.url
                     });
-                    res.json(newUser);
+                    res.status(200).json(newUser);
                 }
 
             })
