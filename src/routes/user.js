@@ -17,7 +17,7 @@ cloudinary.config({
 
 router.get("/users",async(req,res)=>{
     try{
-        const user = await users.find().sort({createdAt:-1});
+        const user = await users.find().sort({_id:-1});
         if(user.length){
             res.set({
                 'Content-Type':'application/json',
