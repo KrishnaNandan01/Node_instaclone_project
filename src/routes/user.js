@@ -1,4 +1,5 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const user = require("../model/userModel");
 const users = require("../model/userModel");
 const arr = require("../mock_data/data");
@@ -7,10 +8,11 @@ const cloudinary = require('cloudinary').v2;
 
 
 const router = express.Router();
+dotenv.config();
 cloudinary.config({ 
     cloud_name: 'desagk6gb', 
-    api_key: '781236957174783', 
-    api_secret: 'ioGtgL6IL87LS3dzr0K3P5XKoLs',
+    api_key: process.env.api_key, 
+    api_secret: process.env.api_secret,
     secure: true
   });
 
@@ -44,6 +46,7 @@ router.post("/users",async(req,res)=>{
             await users.create(arr)
         }
         else {
+           
             const file = req.files.photo;
             cloudinary.uploader.upload(file.tempFilePath, async(err, result) => {
                 if (!err) {
@@ -54,6 +57,7 @@ router.post("/users",async(req,res)=>{
                         description: req.body.description,
                         PostImage: result.url
                     });
+                    
                     res.status(200).json(newUser);
                 }
 
