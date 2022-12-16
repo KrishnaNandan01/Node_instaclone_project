@@ -1,6 +1,5 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const user = require("../model/userModel");
 const users = require("../model/userModel");
 const arr = require("../mock_data/data");
 const cloudinary = require('cloudinary').v2;
