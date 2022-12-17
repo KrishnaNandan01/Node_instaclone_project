@@ -7,6 +7,8 @@ const userSchema = new Schema({
     location:{type:String},
     description:{type:String},
     PostImage:{type:String},
+    date:{type:String},
+    like:{type:String}
 });
 
 const user = mongoose.model("userPost",userSchema);

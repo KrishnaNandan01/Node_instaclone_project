@@ -49,12 +49,17 @@ router.post("/users",async(req,res)=>{
             const file = req.files.photo;
             cloudinary.uploader.upload(file.tempFilePath, async(err, result) => {
                 if (!err) {
-
+                    const date = require('date-and-time');
+                    const pattern = date.compile('DD MMM YYYY');
+                    const value= date.format(new Date(), pattern);
+                    const likes = Math.floor(Math.random()*100);
                     const newUser = await users.create({
                         name: req.body.name,
                         location: req.body.location,
                         description: req.body.description,
-                        PostImage: result.url
+                        PostImage: result.url,
+                        date:value,
+                        like:`${likes} likes`
                     });
                     
                     res.status(200).json(newUser);

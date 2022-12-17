@@ -25,8 +25,6 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-
-
 app.use("/",router)
 
 
